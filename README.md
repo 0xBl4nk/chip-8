@@ -66,4 +66,4 @@ We thank the following people who contributed to this project:
     </table>
 
 ## 📝 Licence
-This project is under license. See the [LICENSE](LICENSE.md) file for more details.
+This project is under license. See the [LICENSE](LICENSE) file for more details.
