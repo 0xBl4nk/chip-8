@@ -5,7 +5,7 @@
 
 
 # 💻 What the fuck is this
-> A simple **chip-8** emulator.  
+> A simple **chip-8** emulator. <br> Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems.  
 
 ## 📃 Requirements
 
