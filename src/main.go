@@ -14,10 +14,9 @@ import (
 )
 
 var chip8 cpu.Chip8
-
 var keyMap map[ebiten.Key]byte
-
 var audioPlayer *audio.Player
+var square *ebiten.Image
 
 func setupKeys() {
 	keyMap = make(map[ebiten.Key]byte)
@@ -39,10 +38,6 @@ func setupKeys() {
 	keyMap[ebiten.KeyV] = 0x0F
 }
 
-var (
-	square *ebiten.Image
-)
-
 func init() {
 	square, _ = ebiten.NewImage(10, 10, ebiten.FilterNearest)
 	square.Fill(color.White)
@@ -59,12 +54,9 @@ func getInput() bool {
 }
 
 func update(screen *ebiten.Image) error {
-
-	// fill screen
 	screen.Fill(color.NRGBA{0x00, 0x00, 0x00, 0xff})
 
 	for i := 0; i < 10; i++ {
-
 		chip8.Draw = false
 		chip8.Inputflag = false
 		gotInput := true
@@ -91,6 +83,7 @@ func update(screen *ebiten.Image) error {
 				}
 			}
 		}
+
 		for key, value := range keyMap {
 			if ebiten.IsKeyPressed(key) {
 				chip8.Keys[value] = 0x01
