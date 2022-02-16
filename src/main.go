@@ -7,6 +7,8 @@ import (
 
 	"image/color"
 
+  setupkeys "chip8/setupkeys"
+
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/audio"
 	"github.com/hajimehoshi/ebiten/audio/mp3"
@@ -17,26 +19,6 @@ var chip8 cpu.Chip8
 var keyMap map[ebiten.Key]byte
 var audioPlayer *audio.Player
 var square *ebiten.Image
-
-func setupKeys() {
-	keyMap = make(map[ebiten.Key]byte)
-	keyMap[ebiten.Key1] = 0x01
-	keyMap[ebiten.Key2] = 0x02
-	keyMap[ebiten.Key3] = 0x03
-	keyMap[ebiten.Key4] = 0x0C
-	keyMap[ebiten.KeyQ] = 0x04
-	keyMap[ebiten.KeyW] = 0x05
-	keyMap[ebiten.KeyE] = 0x06
-	keyMap[ebiten.KeyR] = 0x0D
-	keyMap[ebiten.KeyA] = 0x07
-	keyMap[ebiten.KeyS] = 0x08
-	keyMap[ebiten.KeyD] = 0x09
-	keyMap[ebiten.KeyF] = 0x0E
-	keyMap[ebiten.KeyZ] = 0x0A
-	keyMap[ebiten.KeyX] = 0x00
-	keyMap[ebiten.KeyC] = 0x0B
-	keyMap[ebiten.KeyV] = 0x0F
-}
 
 func init() {
 	square, _ = ebiten.NewImage(10, 10, ebiten.FilterNearest)
@@ -123,7 +105,7 @@ func main() {
 	f, _ := ebitenutil.OpenFile("assets/beep.mp3")
 	d, _ := mp3.Decode(audioContext, f)
 	audioPlayer, _ = audio.NewPlayer(audioContext, d)
-	setupKeys()
+	setupkeys.SetupKeys()
   start()
 	}
 
