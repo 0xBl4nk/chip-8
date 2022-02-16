@@ -16,7 +16,6 @@ import (
 )
 
 var chip8 cpu.Chip8
-var keyMap map[ebiten.Key]byte
 var audioPlayer *audio.Player
 var square *ebiten.Image
 
@@ -26,7 +25,7 @@ func init() {
 }
 
 func getInput() bool {
-	for key, value := range keyMap {
+	for key, value := range setupkeys.KeyMap {
 		if ebiten.IsKeyPressed(key) {
 			chip8.Keys[value] = 0x01
 			return true
@@ -66,7 +65,7 @@ func update(screen *ebiten.Image) error {
 			}
 		}
 
-		for key, value := range keyMap {
+		for key, value := range setupkeys.KeyMap {
 			if ebiten.IsKeyPressed(key) {
 				chip8.Keys[value] = 0x01
 			} else {
