@@ -35,7 +35,8 @@ To run chip-8:
 
 **Linux**:
 ```
-./start -r <rom>
+cd src/
+./chip8 -rom rom/<nome do jogo>
 ```
 
 ## 📫 Contribuite
